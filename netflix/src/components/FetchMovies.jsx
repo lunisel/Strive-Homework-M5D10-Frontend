@@ -15,7 +15,7 @@ class FetchMovies extends Component {
         "https://strive-netflix-api-luna.herokuapp.com/media"
       );
       if (resp.ok) {
-        console.log(resp);
+        console.log(resp.json());
       } else {
         let response = await fetch(
           "http://www.omdbapi.com/?i=tt3896198&apikey=e7302d6b&s="
