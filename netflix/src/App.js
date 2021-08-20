@@ -10,12 +10,12 @@ function App() {
     <>
       <NavBar />
       <UnderNavbar />
-      <FetchMovies saga="harry%20potter" title="Harry Potter Saga" />
+      <FetchMovies /* saga="harry%20potter" title="Harry Potter Saga" */ />
       <FetchMovies
-        saga="lord%20of%20the%20rings"
-        title="Lord of the Rings Saga"
+      /* saga="lord%20of%20the%20rings"
+        title="Lord of the Rings Saga" */
       />
-      <FetchMovies saga="avengers" title="The Avengers Saga" />
+      <FetchMovies /* saga="avengers" title="The Avengers Saga" */ />
       <CommentsArea />
       <Footer />
     </>

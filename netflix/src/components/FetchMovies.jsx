@@ -11,16 +11,22 @@ class FetchMovies extends Component {
 
   componentDidMount = async () => {
     try {
-      let response = await fetch(
-        "http://www.omdbapi.com/?i=tt3896198&apikey=e7302d6b&s=" +
-          this.props.saga
+      let resp = await fetch(
+        "https://strive-netflix-api-luna.herokuapp.com/media"
       );
-      if (response.ok) {
-        let search = await response.json();
-        let movies = search.Search;
-        this.setState({
-          arrMovies: movies,
-        });
+      if (resp.ok) {
+        console.log(resp);
+      } else {
+        let response = await fetch(
+          "http://www.omdbapi.com/?i=tt3896198&apikey=e7302d6b&s="
+        );
+        if (response.ok) {
+          let search = await response.json();
+          let movies = search.Search;
+          this.setState({
+            arrMovies: movies,
+          });
+        }
       }
     } catch (err) {
       console.log(err);
