@@ -1,0 +1,95 @@
+body {
+  background-color: black !important;
+}
+
+/* navbars */
+
+.logo {
+  width: 150px;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+a {
+  color: white !important;
+}
+
+.nav-margin {
+  margin-right: auto !important;
+}
+
+.profile-logo {
+  height: 2rem !important;
+}
+
+#dropdown-button-drop-left {
+  padding: 0px 0px 0px 0px;
+}
+
+.form-group {
+  color: white;
+  margin-right: 3rem;
+}
+
+.form-svg {
+  border: 1px solid white;
+  padding: 3px 4px 4px 4px;
+  height: 1.3rem;
+  width: 1.7rem;
+}
+
+/* Footer */
+
+.footer-class {
+  margin-left: 14rem;
+  margin-top: 6rem;
+  bottom: 0rem;
+  background-color: black;
+}
+
+.footer-icons {
+  height: 2rem;
+  width: 1.5rem;
+}
+
+.list-class {
+  list-style: none;
+  font-size: 13px;
+  padding-left: 0.65rem;
+}
+
+.footer-li {
+  width: 13rem;
+}
+
+.service {
+  border: 1px solid gray;
+  padding: 6px 6px 6px 6px;
+  justify-content: center;
+}
+
+img {
+  object-fit: cover;
+}
+
+img:hover {
+  padding: 2px;
+  cursor: pointer;
+}
+
+div.row {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 1rem;
+}
+
+div.col {
+  padding: 0;
+}
+
+h3 {
+  padding-left: 1rem;
+  color: white !important;
+}
