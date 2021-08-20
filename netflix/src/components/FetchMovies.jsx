@@ -19,7 +19,7 @@ class FetchMovies extends Component {
         this.setState({
           arrMovies: movies,
         });
-        console.log(arr);
+        console.log(movies);
       } else {
         let response = await fetch(
           "http://www.omdbapi.com/?i=tt3896198&apikey=e7302d6b&s="
