@@ -5,14 +5,15 @@ import Loading from "./Loading";
 
 class FetchMovies extends Component {
   state = {
-    query: this.props.saga,
+    query: this.props.query,
     arrMovies: "",
   };
 
   componentDidMount = async () => {
     try {
       let resp = await fetch(
-        "https://strive-netflix-api-luna.herokuapp.com/media"
+        "https://strive-netflix-api-luna.herokuapp.com/search=",
+        this.state.query
       );
       if (resp.ok) {
         const movies = await resp.json();

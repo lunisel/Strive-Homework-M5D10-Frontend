@@ -1,61 +1,129 @@
-import { Component } from "react";
-import { Navbar, Nav, Image, Dropdown } from "react-bootstrap";
-import netflix_logo from "../media/netflix.png";
-import profile_icon from "../media/Profile_avatar_placeholder_large.png";
+import { Navbar, Image, Form } from "react-bootstrap";
+import netflix_logo from "../media/netflix-logo.png";
+import profile_icon from "../media/account_img.png";
 import "../App.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { FaBell } from "react-icons/fa";
+import { Link, withRouter } from "react-router-dom";
+import { IconContext } from "react-icons/lib";
+import { useState } from "react";
+import FetchMovies from "./FetchMovies.jsx";
 
-class NavBar extends Component {
-  render() {
+const NavBar = (props) => {
+  const [query, setQuery] = useState(null);
+  const Search = () => {
     return (
-      <Navbar collapseOnSelect expand="lg" variant="dark">
-        <Navbar.Brand href="#home">
-          <Image src={netflix_logo} className="logo" fluid />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="nav-margin">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">Tv Shows</Nav.Link>
-            <Nav.Link href="#pricing">Movies</Nav.Link>
-            <Nav.Link href="#pricing">Recently Added</Nav.Link>
-            <Nav.Link href="#pricing">My List</Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">
-              <AiOutlineSearch />
-            </Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              KIDS
-            </Nav.Link>
-            <Nav.Link href="#deets">
-              <IoMdNotificationsOutline />
-            </Nav.Link>
-            <Dropdown
-              key="left"
-              id="dropdown-button-drop-left"
-              drop="left"
-              className="mx-2"
-            >
-              <Dropdown.Toggle
-                variant="secondary"
-                id="dropdown-button-drop-left"
-              >
-                <Image src={profile_icon} className="profile-logo" fluid />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <IconContext.Provider value={{ className: "search" }}>
+        <div>
+          <AiOutlineSearch />
+        </div>
+      </IconContext.Provider>
     );
-  }
-}
+  };
 
-export default NavBar;
+  const Bell = () => {
+    return (
+      <IconContext.Provider value={{ className: "bell" }}>
+        <div>
+          <FaBell />
+        </div>
+      </IconContext.Provider>
+    );
+  };
+
+  return (
+    <Navbar collapseOnSelect expand="lg" variant="dark" className="fixed-top">
+      <div className="my-nav-container">
+        <div className="nav-link">
+          <Image src={netflix_logo} fluid className="netflix-logo-nav" />
+        </div>
+        <ul className="navbar-nav mr-auto">
+          <li
+            className={
+              props.location.pathname === "/" ? "nav-item active" : "nav-item"
+            }
+          >
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li
+            className={
+              props.location.pathname === "/tv-shows"
+                ? "nav-item active"
+                : "nav-item"
+            }
+          >
+            <Link className="nav-link" to="/tv-shows">
+              TV Shows
+            </Link>
+          </li>
+          <li
+            className={
+              props.location.pathname === "/movies"
+                ? "nav-item active"
+                : "nav-item"
+            }
+          >
+            <Link className="nav-link" to="/movies">
+              Movies
+            </Link>
+          </li>
+          <li
+            className={
+              props.location.pathname === "/add"
+                ? "nav-item active"
+                : "nav-item"
+            }
+          >
+            <Link className="nav-link" to="/add">
+              Add Form
+            </Link>
+          </li>
+        </ul>
+        <Link className="nav-link right" to="/search">
+          {props.location.pathname === "/search" ? (
+            <Form>
+              <Form.Control
+                type="text"
+                placeholder="Search here..."
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  <FetchMovies query={query} />;
+                }}
+              />
+            </Form>
+          ) : (
+            Search()
+          )}
+        </Link>
+        <div className="nav-link right">{Bell()}</div>
+        <div class="dropdown">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img src={profile_icon} className="profile-logo" />
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a className="dropdown-item" href="#">
+              Action
+            </a>
+            <a className="dropdown-item" href="#">
+              Another action
+            </a>
+            <a className="dropdown-item" href="#">
+              Something else here
+            </a>
+          </div>
+        </div>
+      </div>
+    </Navbar>
+  );
+};
+
+export default withRouter(NavBar);

@@ -1,24 +1,16 @@
 import "./App.css";
-import FetchMovies from "./components/FetchMovies";
-import CommentsArea from "./components/CommentArea";
-import NavBar from "./components/NavBar";
-import UnderNavbar from "./components/UnderNavbar";
-import Footer from "./components/Footer";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./components/Home/Home.jsx";
+import NavBar from "./components/NavBar.jsx";
+import AddForm from "./components/Add/AddForm";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
-      <UnderNavbar />
-      <FetchMovies /* saga="harry%20potter" title="Harry Potter Saga" */ />
-      <FetchMovies
-      /* saga="lord%20of%20the%20rings"
-        title="Lord of the Rings Saga" */
-      />
-      <FetchMovies /* saga="avengers" title="The Avengers Saga" */ />
-      <CommentsArea />
-      <Footer />
-    </>
+      <Route path="/" exact component={Home} />
+      <Route path="/add" exact component={AddForm} />
+    </BrowserRouter>
   );
 }
 

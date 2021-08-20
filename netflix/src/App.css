@@ -1,33 +1,65 @@
 body {
-  background-color: black !important;
+  background-color: #141414 !important;
 }
 
-/* navbars */
-
-.logo {
-  width: 150px;
+.my-nav-container {
+  width: 94%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  height: 3rem;
 }
+
+/* navbar*/
 
 .navbar {
-  background-color: black !important;
+  background-image: linear-gradient(#060606, #141414) !important;
+  padding: 0;
+  padding-top: 1rem;
+  max-height: 3rem;
 }
 
-a {
-  color: white !important;
+.netflix-logo-nav {
+  width: 7vw;
+  margin-right: 1rem;
 }
 
-.nav-margin {
-  margin-right: auto !important;
+a.nav-link {
+  color: #d9dadb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
+a.nav-link.right {
+  margin-right: 0;
+}
+
+svg.search {
+  font-size: 1.5rem;
+  color: white;
+}
+
+svg.bell {
+  font-size: 1.3rem;
+  color: white;
+  margin-right: 1rem;
 }
 
 .profile-logo {
-  height: 2rem !important;
+  height: 2rem;
 }
 
-#dropdown-button-drop-left {
-  padding: 0px 0px 0px 0px;
+button.btn.btn-secondary.dropdown-toggle {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
 }
 
+div.dropdown-menu {
+  right: 0 !important;
+  left: auto;
+}
 .form-group {
   color: white;
   margin-right: 3rem;
@@ -74,11 +106,6 @@ img {
   object-fit: cover;
 }
 
-img:hover {
-  padding: 2px;
-  cursor: pointer;
-}
-
 div.row {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
@@ -92,4 +119,12 @@ div.col {
 h3 {
   padding-left: 1rem;
   color: white !important;
+}
+
+/*-----------------------------------/ADD-------------------------------------*/
+
+div.form-container {
+  width: 50vw;
+  margin: auto;
+  margin-top: 7rem;
 }
