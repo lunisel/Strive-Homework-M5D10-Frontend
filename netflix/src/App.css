@@ -3,11 +3,17 @@ body {
 }
 
 .my-nav-container {
-  width: 94%;
+  width: 90%;
   margin: auto;
   display: flex;
   align-items: center;
   height: 3rem;
+}
+
+.my-home-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 5rem;
 }
 
 /* navbar*/

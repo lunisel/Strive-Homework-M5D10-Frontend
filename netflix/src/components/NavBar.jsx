@@ -34,7 +34,7 @@ const NavBar = (props) => {
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" className="fixed-top">
       <div className="my-nav-container">
-        <div className="nav-link">
+        <div className="nav-link pl-0">
           <Image src={netflix_logo} fluid className="netflix-logo-nav" />
         </div>
         <ul className="navbar-nav mr-auto">
@@ -100,14 +100,14 @@ const NavBar = (props) => {
         <div className="nav-link right">{Bell()}</div>
         <div class="dropdown">
           <button
-            className="btn btn-secondary dropdown-toggle"
+            className="btn btn-secondary dropdown-toggle pr-2"
             type="button"
             id="dropdownMenuButton"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <img src={profile_icon} className="profile-logo" />
+            <img src={profile_icon} className="profile-logo mr-2" />
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a className="dropdown-item" href="#">

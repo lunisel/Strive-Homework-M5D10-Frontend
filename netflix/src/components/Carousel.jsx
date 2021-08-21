@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Carousel, Row, Col } from "react-bootstrap";
-import CommentsArea from "./CommentArea";
 
 class DisplayMovies extends Component {
   state = {
@@ -16,17 +15,15 @@ class DisplayMovies extends Component {
           <Carousel.Item>
             <Row style={{ height: "10rem" }}>
               {this.state.movies.slice(0, 5).map((m) => (
-                <Col key={m.imdbID}>
-                  <img
-                    src={m.Poster}
-                    className="img-fluid"
-                    alt="movie-cover"
-                    onClick={() => {
-                      this.setState({
-                        selectedMovie: m,
-                      });
-                    }}
-                  />
+                <Col
+                  key={m.imdbID}
+                  onClick={() => {
+                    this.setState({
+                      selectedMovie: m,
+                    });
+                  }}
+                >
+                  <img src={m.Poster} className="img-fluid" alt="movie-cover" />
                 </Col>
               ))}
             </Row>
@@ -51,13 +48,6 @@ class DisplayMovies extends Component {
             </Row>
           </Carousel.Item>
         </Carousel>
-        <Row>
-          <Col>
-            {this.state.selectedMovie && (
-              <CommentsArea movie={this.state.selectedMovie} />
-            )}
-          </Col>
-        </Row>
       </>
     );
   }

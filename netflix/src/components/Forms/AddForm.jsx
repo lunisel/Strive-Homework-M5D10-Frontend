@@ -16,15 +16,58 @@ const AddForm = () => {
       [key]: value,
     });
   };
+
+  const handlePosterOnChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>
+      setMedia({
+        ...media,
+        Poster: reader.result,
+      });
+  };
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log(media);
+
+    try {
+      const resp = await fetch(
+        "https://strive-api-netflix.herokuapp.com/media",
+        {
+          method: "POST",
+          body: JSON.stringify(media),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (resp.ok) {
+        alert("Media added succesfully !!");
+        setMedia({
+          Title: "",
+          Year: "",
+          Type: "",
+          Category: "",
+          Poster: "",
+        });
+        console.log(resp);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="form-container">
-      <Form>
+      <Form onSubmit={submitForm}>
         <Form.Group className="mb-1">
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter title here..."
-            defaultValue={media.Title}
+            value={media.Title}
             onChange={(e) => handleInput("Title", e.target.value)}
           />
           {media.Title ? (
@@ -39,7 +82,7 @@ const AddForm = () => {
           <Form.Control
             type="text"
             placeholder="Enter year here..."
-            defaultValue={media.Year}
+            value={media.Year}
             onChange={(e) => handleInput("Year", e.target.value)}
           />
           {media.Year ? (
@@ -131,10 +174,7 @@ const AddForm = () => {
             <div class="card card-body">
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>File Path</Form.Label>
-                <Form.Control
-                  type="file"
-                  onChange={(e) => handleInput("Poster", e.target.value)}
-                />
+                <Form.Control type="file" onChange={handlePosterOnChange} />
               </Form.Group>
             </div>
           </div>

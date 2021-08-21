@@ -1,8 +1,12 @@
+import FetchHome from "./FetchHome";
+
 const Home = () => {
   return (
     <>
-      <div className="my-container">
-        <h1>HOME</h1>
+      <div className="my-home-container">
+        <div className="continue-watching">
+          <FetchHome path="/media" />
+        </div>
       </div>
     </>
   );
