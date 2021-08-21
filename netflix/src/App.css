@@ -121,10 +121,25 @@ h3 {
   color: white !important;
 }
 
-/*-----------------------------------/ADD-------------------------------------*/
+/*-----------------------------------/Add Form-------------------------------------*/
 
 div.form-container {
   width: 50vw;
   margin: auto;
   margin-top: 7rem;
+}
+
+a.btn.btn-add-poster {
+  background-color: transparent;
+  border: solid 1px white;
+  color: white;
+  width: 50%;
+}
+
+div.form-group {
+  margin: 0 !important;
+}
+
+div.card.card-body {
+  background-color: transparent;
 }
